@@ -1,0 +1,238 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 5
+int top=-1;
+int arr[SIZE];
+
+int queue[SIZE];
+int front=-1;
+int rear=-1;
+
+void push(int data){
+    if(top==SIZE-1){
+        printf("\nOverflow\n");
+        return;
+    }else{
+        printf(" Inserted in stack -> %d\n", data);
+        arr[++top]=data;
+    }
+}
+void pop(){
+    if(top==-1){
+        printf("\nUnderflow\n");
+        return;
+    }else{
+        printf("\nThe element %d has been popped\n", arr[top]);
+        top--;
+    }
+}
+void show(){
+    if(top==-1){
+        printf("\nUnderflow\n");
+        return;
+    }else{
+        for(int i=0;i<=top;i++){
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+}
+int isFull() {
+  if ((front == rear + 1) || (front == 0 && rear == SIZE - 1)) return 1;
+  return 0;
+}
+
+int isEmpty() {
+  if (front == -1) return 1;
+  return 0;
+}
+
+void enqueue(int element) {
+  if (isFull())
+    printf("\n Queue is full!! \n");
+  else {
+    if (front == -1) front = 0;
+    rear = (rear + 1) % SIZE;
+    queue[rear] = element;
+    printf(" Inserted in queue -> %d\n", element);
+  }
+}
+
+int dequeue() {
+  int element;
+  if (isEmpty()) {
+    printf("\n Queue is empty !! \n");
+    return (-1);
+  } else {
+    element = queue[front];
+    if (front == rear) {
+      front = -1;
+      rear = -1;
+    }else {
+      front = (front + 1) % SIZE;
+    }
+    printf("\n Deleted element -> %d \n", element);
+    return (element);
+  }
+}
+void reverse(){
+    while(top!=-1){
+        enqueue(arr[top]);
+        top--;
+    }
+    printf("\n");
+    for(int j=0;j<=rear;j++){
+       push(queue[j]); 
+    }
+}
+int main(){
+    int choice;
+
+    int t=1;
+    while(t){
+    printf("\n1. Push\n2. Pop\n3. display\n4.reverse");
+    printf("\nEnter your choise: ");
+    scanf("%d", &choice);
+    int x;
+    switch(choice){
+        case 1:
+            printf("Enter the data to push: ");
+            scanf("%d", &x);
+            push(x);
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            show();
+            break;
+        case 4:
+            reverse();
+            printf(" The reversed stack is: ");
+            show();
+            break;
+    }
+    printf("Enter 0 to exit and 1 to continue: ");
+    scanf("%d", &t);
+    }
+    return 0;
+}
+#include <stdio.h>
+#include <stdlib.h>
+#define SIZE 5
+int top=-1;
+int arr[SIZE];
+
+int queue[SIZE];
+int front=-1;
+int rear=-1;
+
+void push(int data){
+    if(top==SIZE-1){
+        printf("\nOverflow\n");
+        return;
+    }else{
+        printf(" Inserted in stack -> %d\n", data);
+        arr[++top]=data;
+    }
+}
+void pop(){
+    if(top==-1){
+        printf("\nUnderflow\n");
+        return;
+    }else{
+        printf("\nThe element %d has been popped\n", arr[top]);
+        top--;
+    }
+}
+void show(){
+    if(top==-1){
+        printf("\nUnderflow\n");
+        return;
+    }else{
+        for(int i=0;i<=top;i++){
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+}
+int isFull() {
+  if ((front == rear + 1) || (front == 0 && rear == SIZE - 1)) return 1;
+  return 0;
+}
+
+int isEmpty() {
+  if (front == -1) return 1;
+  return 0;
+}
+
+void enqueue(int element) {
+  if (isFull())
+    printf("\n Queue is full!! \n");
+  else {
+    if (front == -1) front = 0;
+    rear = (rear + 1) % SIZE;
+    queue[rear] = element;
+    printf(" Inserted in queue -> %d\n", element);
+  }
+}
+
+int dequeue() {
+  int element;
+  if (isEmpty()) {
+    printf("\n Queue is empty !! \n");
+    return (-1);
+  } else {
+    element = queue[front];
+    if (front == rear) {
+      front = -1;
+      rear = -1;
+    }else {
+      front = (front + 1) % SIZE;
+    }
+    printf("\n Deleted element -> %d \n", element);
+    return (element);
+  }
+}
+void reverse(){
+    while(top!=-1){
+        enqueue(arr[top]);
+        top--;
+    }
+    printf("\n");
+    for(int j=0;j<=rear;j++){
+       push(queue[j]); 
+    }
+}
+int main(){
+    int choice;
+
+    int t=1;
+    while(t){
+    printf("\n1. Push\n2. Pop\n3. display\n4.reverse");
+    printf("\nEnter your choise: ");
+    scanf("%d", &choice);
+    int x;
+    switch(choice){
+        case 1:
+            printf("Enter the data to push: ");
+            scanf("%d", &x);
+            push(x);
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            show();
+            break;
+        case 4:
+            reverse();
+            printf(" The reversed stack is: ");
+            show();
+            break;
+    }
+    printf("Enter 0 to exit and 1 to continue: ");
+    scanf("%d", &t);
+    }
+    return 0;
+}
